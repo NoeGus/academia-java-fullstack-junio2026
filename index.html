@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abarrotes Almiux — Inicio</title>
+
+  <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  ABARROTES ALMIUX — index.html                           ║
+    ║  Página principal (Home)                                   ║
+    ║  Secciones: Hero · Stats · Categorías · Banner promo       ║
+    ╚══════════════════════════════════════════════════════════════╝
+
+    ARCHIVOS DEL PROYECTO:
+    ├── index.html       → Página de inicio (este archivo)
+    ├── productos.html   → Catálogo de productos con filtros
+    ├── nosotros.html    → Acerca de nosotros / historia
+    ├── styles.css       → Todos los estilos (diseño, layout, responsive)
+    └── main.js          → Interactividad y comportamientos
+
+    FUENTES (Google Fonts):
+    · Fraunces 700/900 → Títulos y display
+    · DM Sans 400/500  → Cuerpo de texto e interfaz
+  -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       NAVBAR
+       · Sticky: se queda fijo arriba al hacer scroll
+       · Incluye menú hamburguesa para mobile (activado por JS)
+       · El link activo se marca con la clase .active (via JS)
+  ══════════════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <!-- Logo: ícono + nombre de la tienda -->
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <img src="./images/Almiux_Logo_Sin_Fondo.png" alt="Logo de Abarrotes Almiux" class="logo-img">
+      </div>
+      <span>Abarrotes Almiux</span>
+    </a>
+
+    <!-- Links de navegación (desktop) -->
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="productos.html" class="nav-cta">Pedir ahora</a>
+    </div>
+
+    <!-- Botón hamburguesa (solo visible en mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       HERO
+       · Sección principal de bienvenida, divide en 2 columnas:
+         izquierda = texto + botones · derecha = anaquel ilustrado
+       · En mobile se apila verticalmente (ver styles.css)
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+
+    <!-- Columna izquierda: texto principal -->
+    <div class="hero-text">
+      <!-- Badge / etiqueta superior -->
+      <span class="badge">✦ Entrega a domicilio disponible</span>
+
+      <!-- Título principal (H1) — la palabra "confianza" lleva color de acento -->
+      <h1>Tu tienda de<br><span>confianza</span><br>siempre cerca</h1>
+
+      <!-- Subtítulo descriptivo -->
+      <p class="hero-sub">
+        Productos frescos, marcas de calidad y los mejores precios del barrio.
+        Todo lo que necesitas, en un solo lugar.
+      </p>
+
+      <!-- Botones de acción -->
+      <div class="hero-btns">
+        <!-- Botón primario: lleva a productos -->
+        <a href="productos.html" class="btn-primary">Ver productos</a>
+        <!-- Botón secundario: hace scroll suave al banner de ofertas -->
+        <a href="#ofertas" class="btn-secondary">Ofertas del día →</a>
+      </div>
+    </div>
+
+    <!-- Columna derecha: ilustración de anaquel de latas -->
+    <div class="hero-visual">
+      <div class="shelf">
+        <!-- Tablas horizontales del anaquel -->
+        <div class="shelf-plank p1"></div>
+        <div class="shelf-plank p2"></div>
+        <div class="shelf-plank p3"></div>
+
+        <!-- ── FILA INFERIOR ─────────────────────── -->
+        <div class="prod" style="left:16px; bottom:10px">
+          <div class="can red">🥫</div>
+          <span class="can-label">Tomate</span>
+        </div>
+        <div class="prod" style="left:72px; bottom:10px">
+          <div class="can green">🫒</div>
+          <span class="can-label">Aceite</span>
+        </div>
+        <div class="prod" style="left:128px; bottom:10px">
+          <div class="can yellow">🌽</div>
+          <span class="can-label">Maíz</span>
+        </div>
+        <div class="prod" style="left:184px; bottom:10px">
+          <div class="can blue">💧</div>
+          <span class="can-label">Agua</span>
+        </div>
+        <div class="prod" style="left:240px; bottom:10px">
+          <div class="can orange">🍑</div>
+          <span class="can-label">Durazno</span>
+        </div>
+        <div class="prod" style="left:286px; bottom:10px">
+          <div class="can brown">☕</div>
+          <span class="can-label">Café</span>
+        </div>
+
+        <!-- ── FILA MEDIA ─────────────────────────── -->
+        <div class="prod" style="left:16px; bottom:150px">
+          <div class="can yellow">🧀</div>
+          <span class="can-label">Queso</span>
+        </div>
+        <div class="prod" style="left:72px; bottom:150px">
+          <div class="can green">🥦</div>
+          <span class="can-label">Verduras</span>
+        </div>
+        <div class="prod" style="left:128px; bottom:150px">
+          <div class="can red">🍅</div>
+          <span class="can-label">Salsa</span>
+        </div>
+        <div class="prod" style="left:184px; bottom:150px">
+          <div class="can blue">🐟</div>
+          <span class="can-label">Atún</span>
+        </div>
+        <div class="prod" style="left:240px; bottom:150px">
+          <div class="can orange">🍯</div>
+          <span class="can-label">Miel</span>
+        </div>
+
+        <!-- ── FILA SUPERIOR ──────────────────────── -->
+        <div class="prod" style="left:16px; bottom:290px">
+          <div class="can brown">🍫</div>
+          <span class="can-label">Chocolate</span>
+        </div>
+        <div class="prod" style="left:72px; bottom:290px">
+          <div class="can yellow">🌾</div>
+          <span class="can-label">Arroz</span>
+        </div>
+        <div class="prod" style="left:128px; bottom:290px">
+          <div class="can red">🫙</div>
+          <span class="can-label">Frijoles</span>
+        </div>
+        <div class="prod" style="left:184px; bottom:290px">
+          <div class="can green">🫛</div>
+          <span class="can-label">Chícharos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       STATS STRIP
+       · Franja oscura con 4 métricas clave de la tienda
+       · Los números se animan al entrar al viewport (via JS)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="stat">
+      <!-- data-target: valor numérico final para la animación JS -->
+      <div class="stat-num" data-target="2000" data-prefix="+">+2,000</div>
+      <div class="stat-label">Productos disponibles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20 años</div>
+      <div class="stat-label">Sirviendo al barrio</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">⭐ 4.9</div>
+      <div class="stat-label">Calificación de clientes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30 min</div>
+      <div class="stat-label">Entrega express</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN DE CATEGORÍAS
+       · Grid de 4×2 tarjetas, cada una con ícono + nombre + conteo
+       · Al hacer clic, navegan a productos.html con filtro activo
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="categories">
+    <div class="section-label">Lo que tenemos</div>
+    <div class="section-title">Explora nuestras categorías</div>
+
+    <!-- Grid de categorías — 4 columnas en desktop, 2 en tablet, 1 en mobile -->
+    <div class="cats-grid">
+      <!-- Cada .cat-card tiene data-cat para el filtro en productos.html -->
+      <div class="cat-card" data-cat="carnes">
+        <span class="cat-icon">🥩</span>
+        <div class="cat-name">Carnes y embutidos</div>
+        <div class="cat-count">+120 productos</div>
+      </div>
+      <div class="cat-card" data-cat="limpieza">
+        <span class="cat-icon">🧴</span>
+        <div class="cat-name">Limpieza y hogar</div>
+        <div class="cat-count">+85 productos</div>
+      </div>
+      <div class="cat-card" data-cat="lacteos">
+        <span class="cat-icon">🥛</span>
+        <div class="cat-name">Lácteos y huevo</div>
+        <div class="cat-count">+60 productos</div>
+      </div>
+      <div class="cat-card" data-cat="panaderia">
+        <span class="cat-icon">🍞</span>
+        <div class="cat-name">Panadería</div>
+        <div class="cat-count">+40 productos</div>
+      </div>
+      <div class="cat-card" data-cat="bebidas">
+        <span class="cat-icon">🥤</span>
+        <div class="cat-name">Bebidas</div>
+        <div class="cat-count">+150 productos</div>
+      </div>
+      <div class="cat-card" data-cat="enlatados">
+        <span class="cat-icon">🫙</span>
+        <div class="cat-name">Enlatados y conservas</div>
+        <div class="cat-count">+200 productos</div>
+      </div>
+      <div class="cat-card" data-cat="especias">
+        <span class="cat-icon">🌶️</span>
+        <div class="cat-name">Chiles y especias</div>
+        <div class="cat-count">+75 productos</div>
+      </div>
+      <div class="cat-card" data-cat="botanas">
+        <span class="cat-icon">🍬</span>
+        <div class="cat-name">Dulces y botanas</div>
+        <div class="cat-count">+180 productos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BANNER PROMO
+       · id="ofertas" para que el scroll suave desde el hero funcione
+       · El botón "Ver ofertas" lleva a productos con filtro de oferta
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="promo" id="ofertas">
+    <div class="promo-text">
+      <h2>Ofertas de temporada<br>hasta 40% de descuento</h2>
+      <p>Nuevas ofertas cada semana. ¡No te las pierdas!</p>
+    </div>
+    <a href="productos.html?filtro=ofertas" class="btn-light">Ver ofertas →</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FOOTER
+       · Aparece en todas las páginas con el mismo diseño
+       · Para cambiar links, edita los <a href="..."> de abajo
+  ══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <a href="index.html" class="footer-logo">🏪 Abarrotes Almiux</a>
+    <div class="footer-links">
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="nosotros.html">Contacto</a>
+    </div>
+    <div>© 2025 · Hecho con ❤️ en México</div>
+  </footer>
+
+  <!-- JavaScript principal (debe ir al final del body para que el HTML ya esté cargado) -->
+  <script src="main.js"></script>
+
+</body>
+</html>

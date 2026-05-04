@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abarrotes Almiux — Acerca de nosotros</title>
+
+  <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  nosotros.html — Acerca de nosotros                        ║
+    ║                                                            ║
+    ║  ESTRUCTURA DE ESTA PÁGINA:                                ║
+    ║  · Navbar                                                  ║
+    ║  · Hero de sección                                         ║
+    ║  · Historia / origen de la tienda                          ║
+    ║  · Tarjetas de valores                                     ║
+    ║  · Sección del equipo                                      ║
+    ║  · Sección de contacto y ubicación                         ║
+    ║  · Footer                                                  ║
+    ╚══════════════════════════════════════════════════════════════╝
+  -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🏪</div>
+      <span>Abarrotes Almiux</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="nosotros.html" class="active">Nosotros</a>
+      <a href="index.html#ofertas">Ofertas</a>
+      <a href="productos.html" class="nav-cta">Pedir ahora</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       HERO DE SECCIÓN
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="badge">🏠 Nuestra historia</span>
+      <h1 class="page-title">Más de <span>20 años</span><br>en el barrio</h1>
+      <p class="page-sub">
+        Somos una tienda familiar que nació con el sueño de ofrecer
+        productos de calidad a precio justo, sin que tengas que ir lejos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN: HISTORIA
+       · Divide en 2 columnas: texto a la izquierda, datos a la derecha
+       · En mobile se apila verticalmente
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="about-historia">
+    <div class="about-historia-inner">
+
+      <!-- Columna izquierda: historia en texto -->
+      <div class="historia-texto">
+        <div class="section-label">Nuestros orígenes</div>
+        <h2 class="section-title" style="margin-bottom: 20px;">
+          Comenzamos con<br>un sueño <span style="color: var(--color-primary)">y muchas ganas</span>
+        </h2>
+
+        <!-- Párrafos de historia — modifícalos con tu historia real -->
+        <p>Doña Alma.
+          En el año 2004, Doña Alma, alias Almiux, abrió las puertas de esta tienda con
+          apenas tres anaqueles, una nevera y la convicción de que el barrio
+          merecía un lugar donde comprar productos frescos sin necesidad de
+          recorrer grandes distancias.
+        </p>
+        <br>
+        <p>
+          Lo que comenzó como un pequeño changarro en la esquina de la colonia
+          creció gracias al cariño de las familias del vecindario. Hoy contamos
+          con más de 2,000 productos, servicio a domicilio y el mismo trato
+          de siempre: honesto, cercano y de confianza.
+        </p>
+        <br>
+        <p>
+          Seguimos siendo la misma tienda de siempre, con la misma familia
+          detrás del mostrador. Porque creemos que el comercio local es el
+          corazón de cada colonia.
+        </p>
+      </div>
+
+      <!-- Columna derecha: datos destacados -->
+      <div class="historia-datos">
+        <!-- Cada .dato-card es un número destacado con descripción -->
+        <div class="dato-card">
+          <div class="dato-num">2004</div>
+          <div class="dato-label">Año de fundación</div>
+        </div>
+        <div class="dato-card">
+          <div class="dato-num">+2,000</div>
+          <div class="dato-label">Productos en tienda</div>
+        </div>
+        <div class="dato-card">
+          <div class="dato-num">3</div>
+          <div class="dato-label">Generaciones de la familia</div>
+        </div>
+        <div class="dato-card">
+          <div class="dato-num">⭐ 4.9</div>
+          <div class="dato-label">Calificación de clientes</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN: VALORES
+       · Tarjetas que explican la filosofía de la tienda
+       · Modifica el ícono, título y texto de cada valor
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="about-valores">
+    <div class="section-label" style="text-align:center">Lo que nos define</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom: 40px;">Nuestros valores</h2>
+
+    <div class="valores-grid">
+
+      <!-- Valor 1 -->
+      <div class="valor-card">
+        <div class="valor-icon">🤝</div>
+        <h3 class="valor-titulo">Confianza</h3>
+        <p class="valor-desc">
+          Llevamos más de 20 años ganándonos la confianza de nuestros
+          clientes con honestidad, buenos precios y trato justo.
+        </p>
+      </div>
+
+      <!-- Valor 2 -->
+      <div class="valor-card">
+        <div class="valor-icon">🌱</div>
+        <h3 class="valor-titulo">Frescura</h3>
+        <p class="valor-desc">
+          Nos aseguramos de que cada producto en nuestros anaqueles
+          esté en perfectas condiciones y dentro de su fecha de vigencia.
+        </p>
+      </div>
+
+      <!-- Valor 3 -->
+      <div class="valor-card">
+        <div class="valor-icon">🏘️</div>
+        <h3 class="valor-titulo">Comunidad</h3>
+        <p class="valor-desc">
+          Somos parte del barrio. Por eso apoyamos a productores locales
+          y reinvertimos en la colonia que nos ha dado tanto.
+        </p>
+      </div>
+
+      <!-- Valor 4 -->
+      <div class="valor-card">
+        <div class="valor-icon">⚡</div>
+        <h3 class="valor-titulo">Rapidez</h3>
+        <p class="valor-desc">
+          Entrega a domicilio en menos de 30 minutos dentro de la colonia.
+          Sabemos que tu tiempo es valioso.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN: EQUIPO
+       · Modifica los nombres, roles e íconos con tu equipo real
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="about-equipo">
+    <div class="section-label" style="text-align:center">Colaboradores</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom: 40px;">A quien conocerás</h2>
+
+    <div class="equipo-grid">
+
+      <!-- Miembro del equipo: cambia nombre, rol y emoji -->
+      <div class="miembro-card">
+        <div class="miembro-avatar">🧒</div>
+        <h3 class="miembro-nombre">Doña Alma, alias "Almiux"</h3>
+        <p class="miembro-rol">Fundadora y dueña</p>
+        <p class="miembro-desc">El ALMA de la tienda. Conoce a cada cliente por su nombre y sabe exactamente dónde está cada producto.</p>
+      </div>
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👩‍💼</div>
+        <h3 class="miembro-nombre">María Ramírez</h3>
+        <p class="miembro-rol">Gerente de operaciones</p>
+        <p class="miembro-desc">Hija de Doña Alma. Lleva la logística, los pedidos y mantiene los anaqueles siempre bien surtidos.</p>
+      </div>
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👨‍💻</div>
+        <h3 class="miembro-nombre">Carlos Ramírez</h3>
+        <p class="miembro-rol">Reparto y atención</p>
+        <p class="miembro-desc">El más rápido del barrio. Garantiza que tu pedido llegue en tiempo y en perfectas condiciones.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN: Desarrolladores
+       · Modifica los nombres, roles e íconos con tu equipo real
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="about-devs">
+    <div class="section-label" style="text-align:center">Las personas detrás de este sitio</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom: 40px;">Nuestro equipo</h2>
+
+    <div class="equipo-grid">
+
+      <!-- Miembro del equipo: cambia nombre, rol y emoji -->
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Kaleb Torres</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Danna Remigio</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Arturo Ramírez </h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Zared Ortiz</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Yarilis Hernández</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Kaleb Torres</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Diego Quiñónez</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+      <div class="miembro-card">
+        <div class="miembro-avatar">👮‍♀️</div>
+        <h3 class="miembro-nombre">Iván Pacheco</h3>
+        <p class="miembro-rol">Developer</p>
+        <p class="miembro-desc">El alma de las fiestas</p>
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN: CONTACTO Y UBICACIÓN
+       · Modifica la dirección, teléfono y horarios con los reales
+       · El mapa es un placeholder — puedes insertar un iframe
+         de Google Maps con tu ubicación real
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="about-contacto">
+    <div class="contacto-inner">
+
+      <!-- Columna izquierda: datos de contacto -->
+      <div class="contacto-info">
+        <div class="section-label">Encuéntranos</div>
+        <h2 class="section-title" style="margin-bottom: 24px;">Visítanos o<br><span style="color: var(--color-primary)">llámanos</span></h2>
+
+        <!-- Lista de datos de contacto -->
+        <div class="contacto-lista">
+          <div class="contacto-item">
+            <span class="contacto-icono">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <!-- MODIFICAR: pon tu dirección real aquí -->
+              <p>Calle Hidalgo #42, Col. Centro,<br>Ciudad de México, CDMX</p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="contacto-icono">📞</span>
+            <div>
+              <strong>Teléfono</strong>
+              <!-- MODIFICAR: pon tu número real aquí -->
+              <p><a href="tel:+525512345678">55 1234 5678</a></p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="contacto-icono">💬</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <!-- MODIFICAR: pon tu número de WhatsApp -->
+              <p><a href="https://wa.me/525512345678" target="_blank">Escríbenos al 55 1234 5678</a></p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="contacto-icono">🕐</span>
+            <div>
+              <strong>Horario</strong>
+              <!-- MODIFICAR: pon tus horarios reales -->
+              <p>Lunes a viernes: 7:00 am – 9:00 pm</p>
+              <p>Sábado y domingo: 8:00 am – 8:00 pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: mapa placeholder -->
+      <div class="mapa-wrap">
+        <!--
+          REEMPLAZAR este div por un iframe de Google Maps:
+          1. Ve a Google Maps y busca tu ubicación
+          2. Haz clic en "Compartir" → "Insertar un mapa"
+          3. Copia el <iframe> y pégalo aquí en lugar del div.mapa-placeholder
+        -->
+        <div class="mapa-placeholder">
+          <span>🗺️</span>
+          <p>Inserta aquí tu mapa de Google Maps</p>
+          <small>Compartir → Insertar un mapa → Copiar iframe</small>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="index.html" class="footer-logo">🏪 Abarrotes Almiux</a>
+    <div class="footer-links">
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="nosotros.html">Contacto</a>
+    </div>
+    <div>© 2025 · Hecho con ❤️ en México</div>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
