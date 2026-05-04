@@ -76,8 +76,9 @@ body {
 }
 
 img {
-  max-width: 120%;
+  max-width: 100%;
   display: block;
+  border-radius: 12px;
 }
 
 a {
@@ -426,6 +427,11 @@ h1 span {
   border-bottom: 1.5px solid var(--color-border);
   position: relative;
   overflow: hidden;
+
+  display: flex;                 /* 🔥 clave */
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
 /* Círculo decorativo (igual que el hero principal) */
@@ -445,6 +451,31 @@ h1 span {
   position: relative;
   z-index: 1;
   max-width: 600px;
+  flex: 1;
+}
+
+.page-hero img {
+  flex: 1;                       /* ocupa la otra mitad */
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-hero-content {
+    max-width: 100%;
+  }
+
+  .page-hero img {
+    max-width: 100%;
+  }
 }
 
 /* Título de la página interna */
@@ -1012,6 +1043,7 @@ footer {
 .historia-datos {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-top: 130px;
   gap: 16px;
 }
 
