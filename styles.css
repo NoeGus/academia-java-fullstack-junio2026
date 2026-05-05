@@ -98,9 +98,9 @@ body {
 }
 
 img {
-  max-width: 100%;
-  display: block;
-  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 a {
@@ -153,8 +153,8 @@ nav {
 }
 
 .logo-icon img {
-  width: 100px;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -904,12 +904,13 @@ footer {
 .prod-img-wrap {
   background: var(--color-bg);
   border-radius: var(--radius-sm);
-  height: 100px;
+  height: 120px;
+  /* puedes ajustar */
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  font-size: 48px;
+  overflow: hidden;
+  /* 🔥 importante */
 }
 
 /* Badge de oferta (esquina superior derecha del ícono) */
@@ -1621,4 +1622,13 @@ footer {
     padding: 10px 14px;
     font-size: 13px;
   }
+}
+
+.valor-card img {
+  width: 100%;
+  height: 180px;
+  /* 🔥 mismo tamaño para todas */
+  object-fit: cover;
+  /* recorta sin deformar */
+  border-radius: 12px;
 }
