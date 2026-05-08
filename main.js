@@ -276,8 +276,11 @@ function aplicarFiltro(filtro) {
       // Solo tarjetas con data-oferta="true"
       mostrar = tarjeta.dataset.oferta === 'true';
     } else {
-      // Tarjetas cuya categoría coincide con el filtro
-      mostrar = tarjeta.dataset.cat === filtro;
+      // Convertir las categorías en un arreglo
+      const categorias = tarjeta.dataset.cat.split(' ');
+
+      // Verificar si el filtro existe dentro de las categorías
+      mostrar = categorias.includes(filtro);
     }
 
     if (mostrar) {
