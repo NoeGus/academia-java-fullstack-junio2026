@@ -26,20 +26,88 @@
 // ══════════════════════════════════════════════════════════════════
 // PUNTO DE ENTRADA — se ejecuta cuando el HTML termina de cargar
 // ══════════════════════════════════════════════════════════════════
+/*const PRODUCTOS=[
+  {
+    
+  },
+
+
+
+
+
+]
+function renderizarProductos() {
+  const grid = document.getElementById('productsGrid');
+  if (!grid) return;
+
+  // Limpiar tarjetas existentes (por si se llama varias veces)
+  //grid.innerHTML = '';
+
+  PRODUCTOS.forEach(p => {
+    // Construir la imagen/ícono del producto
+    const imgHTML = p.imagen
+      ? `<img src="${p.imagen}" alt="${p.nombre}">`
+      : `<span class="prod-icon">${p.icono}</span>`;
+
+    // Badge de oferta (solo si existe)
+    const badgeHTML = p.badge
+      ? `<span class="prod-badge">${p.badge}</span>`
+      : '';
+
+    // Precio original tachado (solo si hay oferta)
+    const precioOrigHTML = p.precioOriginal
+      ? `<span class="prod-original">$${p.precioOriginal.toFixed(2)}</span>`
+      : '';
+
+    // data-oferta para el filtro de ofertas
+    const dataOferta = p.oferta ? 'data-oferta="true"' : '';
+
+    // Construir la tarjeta completa
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.dataset.cat = p.cat;
+    if (p.oferta) card.dataset.oferta = 'true';
+
+    card.innerHTML = `
+      <div class="prod-img-wrap">
+        ${imgHTML}
+        ${badgeHTML}
+      </div>
+      <div class="prod-info">
+        <p class="prod-cat-tag">${p.catLabel}</p>
+        <h3 class="prod-name">${p.nombre}</h3>
+        <p class="prod-desc">${p.desc}</p>
+        <div class="prod-prices">
+          <span class="prod-price">$${p.precio.toFixed(2)}</span>
+          ${precioOrigHTML}
+        </div>
+      </div>
+      <button class="btn-agregar" onclick="agregarAlCarrito(this, '${p.nombre}')">
+        + Agregar
+      </button>
+    `;
+
+    grid.appendChild(card);
+  });
+}*/
+// NUEVO — REEMPLAZAR CON ESTO:
 document.addEventListener('DOMContentLoaded', () => {
 
   iniciarNavbar();
   marcarLinkActivo();
-  iniciarAnimacionesScroll();
-  iniciarContadores();
   iniciarCategoriasHome();
 
-  // Solo en productos.html
   if (document.getElementById('productsGrid')) {
-    iniciarFiltros();
-    iniciarBusqueda();
-    revisarFiltroURL();  // Lee el filtro de la URL (ej: ?filtro=ofertas)
+    renderizarProductos();      // 1° primero genera las tarjetas del array
+    iniciarAnimacionesScroll(); // 2° ya existen en el DOM
+    iniciarFiltros();           // 3° ya hay tarjetas que filtrar
+    iniciarBusqueda();          // 4° idem
+    revisarFiltroURL();         // 5° aplica filtro de la URL si hay uno
+  } else {
+    iniciarAnimacionesScroll(); // para index.html y otras páginas
   }
+
+  iniciarContadores();
 
 });
 
@@ -276,8 +344,11 @@ function aplicarFiltro(filtro) {
       // Solo tarjetas con data-oferta="true"
       mostrar = tarjeta.dataset.oferta === 'true';
     } else {
-      // Tarjetas cuya categoría coincide con el filtro
-      mostrar = tarjeta.dataset.cat === filtro;
+      // Convertir las categorías en un arreglo
+      const categorias = tarjeta.dataset.cat.split(' ');
+
+      // Verificar si el filtro existe dentro de las categorías
+      mostrar = categorias.includes(filtro);
     }
 
     if (mostrar) {
