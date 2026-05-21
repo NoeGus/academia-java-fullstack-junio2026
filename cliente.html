@@ -64,11 +64,14 @@
   </nav>
 
   <!-- ══════════════════════════════════════════════════════════════
-       HERO SUPERIOR — Tarea de YARIS
-       Yaris: agrega aquí el badge, el h1 y el párrafo del hero.
+       HERO SUPERIOR 
   ══════════════════════════════════════════════════════════════ -->
-  <section class="registro-hero">
-    <!-- Yaris agrega el contenido aquí -->
+ <section class="registro-hero">
+    <span class="badge">Formulario de clientes</span>
+    <h1>Queremos <span>conocerte</span></h1>
+    <p>
+      Completa el formulario para registrarte como cliente en Abarrotes Almiux.
+    </p>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════════
@@ -213,14 +216,48 @@
 
     <!-- ── Columna derecha: beneficios — Tarea de YARIS ────────── -->
     <aside>
-      <!-- ═══════════════════════════════════════════════════════
-           PANEL DE BENEFICIOS — Tarea de YARIS
-           Yaris: agrega aquí el div.beneficios-card con el
-           título, párrafo, lista de 4 beneficios con íconos,
-           el div#jsonResultado (vacío, lo llena Noé con JS)
-           y el link de "¿Ya tienes cuenta?".
-      ════════════════════════════════════════════════════════ -->
+      <div class="beneficios-card">
+        <h3>Beneficios</h3>
+        <p>
+          Al registrarte podrás realizar pedidos a domicilio de forma sencilla
+          Todo lo que necesitas a un solo click 
+        </p>
+
+        <div class="beneficios-lista">
+          <div class="beneficio-item">
+            <div class="registro-im">
+              <img src="/images/registro.jpeg" alt="RegistroIm">
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="beneficio-icono">🚚</div>
+            <div>
+              <strong>Pedidos rápidos</strong>
+              <span>Facilita tus futuras compras y entregas a domicilio.</span>
+            </div>
+          </div>
+          <div class="beneficio-item">
+            <div class="beneficio-icono">⭐</div>
+            <div>
+              <strong>Atención personalizada</strong>
+              <span>Obtén un servicio cercano y dedicado, ideal para clientes frecuentes.</span>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Panel JSON — llenado por NOÉ (JS) -->
+        <div class="json-resultado" id="jsonResultado">
+          <p class="json-titulo">📋 Objeto JSON del usuario</p>
+          <pre class="json-code" id="jsonCode"></pre>
+        </div>
+
+        <p class="ya-cuenta">
+          ¿Ya tienes cuenta? <a href="#">Inicia sesión aquí</a>
+        </p>
+      </div>
     </aside>
+
 
   </div><!-- /registro-layout -->
 
