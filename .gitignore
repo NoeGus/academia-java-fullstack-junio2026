@@ -1,0 +1,14 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Compilados Java
+out/
+target/
+build/
+
+# Archivos temporales
+*.class
+
+# Logs
+*.log
