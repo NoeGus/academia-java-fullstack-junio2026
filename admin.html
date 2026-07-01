@@ -96,11 +96,17 @@
         <!-- Nombre del producto -->
          <label for="nombre">Producto *</label>
          <input type="text" id="nombre" required>
+         <span id="error-nombre" class="campo-error-msg" style="color:var(--color-primary);font-size:13px;display:none">
+           El nombre del producto es obligatorio
+         </span>
          
         <!-- Descripción -->
          <label for="descripcion">Descripción *</label>
          <textarea id="descripcion"></textarea>
-                  
+         <span id="error-descripcion" class="campo-error-msg" style="color:var(--color-primary);font-size:13px;display:none">
+           La descripción es obligatoria
+         </span>
+                   
          <!-- Categoría -->
          <label for="categoria">Categoría *</label>
          <select id="categoria">
@@ -117,21 +123,31 @@
           <option value="abarrotes"> Abarrotes</option>
           <option value="higiene"> Higiene personal</option>
         </select>
-        
+        <span id="error-categoria" class="campo-error-msg" style="color:var(--color-primary);font-size:13px;display:none">
+          Selecciona una categoría
+        </span>
         
       <!-- Precio -->
         <label for="precio">Precio *</label>
-        <input type="number" id="precio" required>
+        <input type="number" id="precio" min="0.01" step="0.01" required>
+        <span id="error-precio" class="campo-error-msg" style="color:var(--color-primary);font-size:13px;display:none">
+          Ingresa un precio mayor a 0
+        </span>
         
         <!-- Oferta -->
         <label>
-          <input type="radio" id="oferta" required> 
+          <input type="checkbox" id="oferta"> 
           Producto en oferta
         </label>
         
-      <!-- Descuento -->
-        <label for="descuento">Descuento</label>
-        <input type="number" id="descuento" required>
+        <!-- Descuento (solo visible si el producto está en oferta) -->
+        <div id="descuentoGroup" style="display:none">
+          <label for="descuento">Descuento (%)</label>
+          <input type="number" id="descuento" min="1" max="99" placeholder="Ej: 20">
+          <span id="error-descuento" class="campo-error-msg" style="color:var(--color-primary);font-size:13px;display:none">
+            Ingresa un descuento entre 1 y 99
+          </span>
+        </div>
         
         
       <!-- Imagen -->

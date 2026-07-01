@@ -44,7 +44,7 @@ function renderizarProductos() {
   if (!grid) return;
 
   // Limpiar tarjetas existentes
-  // grid.innerHTML = '';
+  grid.innerHTML = '';
 
   PRODUCTOS.forEach(p => {
 
@@ -95,7 +95,7 @@ function renderizarProductos() {
 
       <button 
         class="btn-agregar"
-        onclick="agregarAlCarrito(this, '${p.nombre}')"
+        onclick="agregarAlCarrito(this, '${p.nombre.replace(/'/g, "\\'")}')"
       >
         + Agregar
       </button>
@@ -117,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
   iniciarNavbar();
   marcarLinkActivo();
   iniciarCategoriasHome();
+  iniciarAnimacionesScroll();
+  iniciarContadores();
 
   if (document.getElementById('productsGrid')) {
     iniciarFiltros();
@@ -124,6 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     revisarFiltroURL();  // Lee el filtro de la URL (ej: ?filtro=ofertas)
     renderizarProductos(); // Renderiza las tarjetas de producto desde el arreglo PRODUCTOS
   }
+  const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.addEventListener('show.bs.modal', () => {
+            renderCart();
+        });
+    }
 
 });
 
@@ -468,6 +476,7 @@ function iniciarBusqueda() {
 
 // Variable global del conteo (compartida entre funciones del carrito)
 let conteoCarrito = 0;
+let ProducCarr= []
 
 /**
  * Agrega un producto al carrito flotante.
@@ -480,8 +489,21 @@ function agregarAlCarrito(boton, nombre) {
   const carritoFlotante = document.getElementById('carritoFlotante');
   const carritoCount    = document.getElementById('carritoCount');
 
-  // Incrementar conteo
-  conteoCarrito++;
+  // Leer el precio desde la tarjeta del producto
+  const card = boton.closest('.product-card');
+  const precioTexto = card?.querySelector('.prod-price')?.textContent || '$0';
+  const precio = parseFloat(precioTexto.replace('$', '')) || 0;
+
+  // Agregar al arreglo del carrito (o aumentar cantidad si ya existe)
+  const existente = ProducCarr.find(i => i.product.name === nombre);
+  if (existente) {
+    existente.quantity++;
+  } else {
+    ProducCarr.push({ product: { id: nombre, name: nombre, price: precio }, quantity: 1 });
+  }
+
+  // Recalcular conteo total
+  conteoCarrito = ProducCarr.reduce((sum, i) => sum + i.quantity, 0);
 
   // Actualizar el número en el chip
   if (carritoCount) carritoCount.textContent = conteoCarrito;
@@ -502,8 +524,99 @@ function agregarAlCarrito(boton, nombre) {
     boton.disabled = false;
   }, 1500);
 
-  // Log en consola (útil para debug)
   console.log(`Producto agregado: ${nombre} | Total en carrito: ${conteoCarrito}`);
+}
+
+function renderCart() {
+  const cartBody = document.getElementById('cartBody');
+  if (!cartBody) return;
+
+  if (ProducCarr.length === 0) {
+    cartBody.innerHTML = `
+      <div class="text-center py-4">
+        <p class="mt-2 text-muted">Tu carrito está vacío.</p>
+      </div>
+    `;
+    return;
+  }
+
+  let total = 0;
+  let itemsHtml = `
+    <table class="table cart-table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio unitario</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  ProducCarr.forEach((item, index) => {
+    const subtotal = item.product.price * item.quantity;
+    total += subtotal;
+    itemsHtml += `
+      <tr>
+        <td>${item.product.name}</td>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity(${index}, -1)">−</button>
+            <span>${item.quantity}</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity(${index}, 1)">+</button>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeFromCart(${index})">✕</button>
+          </div>
+        </td>
+        <td>$${item.product.price.toFixed(2)}</td>
+        <td>$${subtotal.toFixed(2)}</td>
+      </tr>
+    `;
+  });
+
+
+
+  itemsHtml += `
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3"><strong>Total</strong></td>
+          <td><strong>$${total.toFixed(2)}</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
+
+  cartBody.innerHTML = itemsHtml;
+}
+
+function changeQuantity(index, delta) {
+  if (!ProducCarr[index]) return;
+  ProducCarr[index].quantity += delta;
+  if (ProducCarr[index].quantity <= 0) {
+    ProducCarr.splice(index, 1);
+  }
+  conteoCarrito = ProducCarr.reduce((sum, i) => sum + i.quantity, 0);
+  const carritoCount = document.getElementById('carritoCount');
+  if (carritoCount) carritoCount.textContent = conteoCarrito;
+  if (ProducCarr.length === 0) {
+    const carritoFlotante = document.getElementById('carritoFlotante');
+    if (carritoFlotante) carritoFlotante.style.display = 'none';
+  }
+  renderCart();
+}
+
+function removeFromCart(index) {
+  if (!ProducCarr[index]) return;
+  ProducCarr.splice(index, 1);
+  conteoCarrito = ProducCarr.reduce((sum, i) => sum + i.quantity, 0);
+  const carritoCount = document.getElementById('carritoCount');
+  if (carritoCount) carritoCount.textContent = conteoCarrito;
+  if (ProducCarr.length === 0) {
+    const carritoFlotante = document.getElementById('carritoFlotante');
+    if (carritoFlotante) carritoFlotante.style.display = 'none';
+  }
+  renderCart();
 }
 
 /**
@@ -563,20 +676,23 @@ function revisarFiltroURL() {
 }
 
 
-fetch('contacto.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('contacto-container').innerHTML = data;
-  })
-  .catch(err => console.error(err));
+const _contactoContainer = document.getElementById('contacto-container');
+if (_contactoContainer) {
+  fetch('contacto.html')
+    .then(res => res.text())
+    .then(data => { _contactoContainer.innerHTML = data; })
+    .catch(err => console.error(err));
+}
   
   document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registroForm");
+  if (!form) return;   // Solo ejecutar en cliente.html
+
   const alertaError = document.getElementById("alertaError");
   const alertaExito = document.getElementById("alertaExito");
 
-  alertaError.style.display = "none";
-  alertaExito.style.display = "none";
+  if (alertaError) alertaError.style.display = "none";
+  if (alertaExito) alertaExito.style.display = "none";
 
   /* ── 1. Funciones de validación ─────────────────────────── */
   function validarNombres() {

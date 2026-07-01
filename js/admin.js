@@ -6,7 +6,8 @@ const $ = id => document.getElementById(id);
 
 function toggleError(campoId, mensajeId, mostrar) {
     $(campoId)?.classList.toggle('campo-error', mostrar);
-    $(mensajeId)?.classList.toggle('visible', mostrar);
+    const msg = $(mensajeId);
+    if (msg) msg.style.display = mostrar ? 'block' : 'none';
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -86,10 +87,10 @@ function validarFormulario() {
 
 $('oferta')?.addEventListener('change', () => {
 
-    $('descuentoGroup')?.classList.toggle(
-        'visible',
-        $('oferta').checked
-    );
+    const grupo = $('descuentoGroup');
+    if (grupo) {
+        grupo.style.display = $('oferta').checked ? 'block' : 'none';
+    }
 
     if (!$('oferta').checked) {
         $('descuento').value = '';
